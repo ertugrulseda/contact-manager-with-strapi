@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import { useState, React } from 'react';
 import './App.css';
+import Contact from './components/Contact';
+import ContactEntry from './components/ContactEntry';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	let contactInfo = {
+		Name: '',
+		Surname: '',
+		Phone: '',
+		Deleted: false
+	};
 
+	const [ contactList, setcontactList ] = useState([]);
+
+	const onClickPhoneHandle = (phone) => {
+		contactInfo.Phone = phone;
+		setcontactList([ ...contactList, contactInfo ]);
+	};
+	const onClickSurnameHandle = (surname) => {
+		contactInfo.Surname = surname;
+	};
+
+	const onClickNameHandle = (name) => {
+		contactInfo.Name = name;
+	};
+
+	return (
+		<div className="App">
+			<ContactEntry
+				onClickNameHandle={onClickNameHandle}
+				onClickSurnameHandle={onClickSurnameHandle}
+				onClickPhoneHandle={onClickPhoneHandle}	/>
+			<ul>
+				{contactList.map((item, index) => {
+					return (
+						<li key={index}>
+							<Contact name={item.Name} surname={item.Surname} phone={item.Phone} isdeleted="false" />
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	);
+}
 export default App;

@@ -1,0 +1,14 @@
+.contactEntry{
+    margin-top:20px;
+    padding: 15px;
+}
+
+.btn{
+    width:300px;
+    height: 30px;
+    background-color: salmon;
+    border-style: solid;
+}
+input{
+    height: 30px;
+}
