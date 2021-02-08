@@ -1,12 +1,30 @@
+*,*::after,*::before{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
+  background: content-box radial-gradient(skyblue,#FBF8DA);
+  height: 100vh;
+}
+.list-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.list-item{
+  list-style-type: none;
+}
+.title{
+  color: salmon;
+  box-shadow: 5px 3px 3px olive;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

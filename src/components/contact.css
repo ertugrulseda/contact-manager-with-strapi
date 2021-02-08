@@ -1,0 +1,24 @@
+label{
+  padding:5px;
+}
+
+.btn-contact{
+    width: 80px;
+    height: 20px;
+    padding: 0 15px;
+    background-color: salmon;
+    box-shadow: 5px 3px 3px olive;
+    border: none;
+    transition: all 0.5s;
+}
+.btn-contact:hover{
+ transform: scale(1.1);
+}
+
+.contact{
+ 
+  display: grid;
+  
+  grid-template-columns: 400px  100px;
+  text-align: center;
+}

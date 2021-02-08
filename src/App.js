@@ -27,19 +27,23 @@ function App() {
 
 	return (
 		<div className="App">
+			<h1 className="title">Contact Manager</h1>
 			<ContactEntry
 				onClickNameHandle={onClickNameHandle}
 				onClickSurnameHandle={onClickSurnameHandle}
-				onClickPhoneHandle={onClickPhoneHandle}	/>
-			<ul>
-				{contactList.map((item, index) => {
-					return (
-						<li key={index}>
-							<Contact name={item.Name} surname={item.Surname} phone={item.Phone} isdeleted="false" />
-						</li>
-					);
-				})}
-			</ul>
+				onClickPhoneHandle={onClickPhoneHandle}
+			/>
+			<div className="list-wrapper">
+				<ul className="list">
+					{contactList.map((item, index) => {
+						return (
+							<li className="list-item" key={index}>
+								<Contact name={item.Name} surname={item.Surname} phone={item.Phone} isdeleted="false" />
+							</li>
+						);
+					})}
+				</ul>
+			</div>
 		</div>
 	);
 }

@@ -4,11 +4,22 @@
 }
 
 .btn{
-    width:300px;
-    height: 30px;
+    width:auto;
+    height: 35px;
+    padding:0 10px;
     background-color: salmon;
     border-style: solid;
+    border:none;
+    box-shadow: 5px 3px 3px olive;
+    transition: all 0.5s;
 }
+
+.btn:hover{
+    transform: scale(1.1);
+   }
+
 input{
     height: 30px;
+    margin:15px 10px;
+    box-shadow: 5px 3px 3px olive;
 }

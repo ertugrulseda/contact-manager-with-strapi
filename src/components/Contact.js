@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './contact.css';
 
 function Contact({ name, surname, phone, isdeleted }) {
 
@@ -12,22 +13,22 @@ function Contact({ name, surname, phone, isdeleted }) {
   },[]);
 
 	const onClick = () => {
-
     const div =  document.querySelector(".contact");
     if(del === 'false'){
       //api call
       setDel('true');
       div.style.textDecorationLine = 'line-through';
+    } else{
+      //api call
+      setDel('false');
+      div.style.textDecorationLine = 'none';
     }
 	};
 
 	return (
 		<div  className="contact">
-			<label id="name">{name}</label>
-			<label id="surname">{surname}</label>
-			<label id="phone">{phone}</label>
-			{isdeleted}
-			<button className="btn" onClick={onClick}>
+			<label className='lbl' >{name} {surname}  {phone}</label>
+			<button className="btn-contact" onClick={onClick}>
 				Delete
 			</button>
 		</div>
