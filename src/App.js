@@ -5,10 +5,11 @@ import ContactEntry from './components/ContactEntry';
 
 function App() {
 	let contactInfo = {
-		Name: '',
-		Surname: '',
-		Phone: '',
-		Deleted: false
+		id: -1,
+		name: '',
+		surname: '',
+		phone: '',
+		isDeleted: false
 	};
 
 	const [ contactList, setcontactList ] = useState([]);
@@ -20,47 +21,36 @@ function App() {
 	const fetchContacts = async () => {
 		const resp = await fetch('http://localhost:1337/contact-managers/');
 		const jsonData = await resp.json();
-		for (let index = 0; index < jsonData.length; index++) {
-			const item = jsonData[index];
-			contactInfo.Name = item.name;
-			contactInfo.Surname = item.surname;
-			contactInfo.Phone = item.phone;
-			contactInfo.Deleted = item.isDeleted;
-			setcontactList([ ...contactList, contactInfo ]);
-		}
+		setcontactList(jsonData);
+		console.log(jsonData);
 	};
 
 	const addContact = async (contactInfo) => {
-		const newContact = {
-			name: contactInfo.Name,
-			surname: contactInfo.Surname,
-			phone: contactInfo.Phone,
-			isDeleted: contactInfo.Deleted
-		};
 		const headers = {
-			'Content-Type': 'application/json',
-		  };
-		const data = JSON.stringify(newContact);
+			'Content-Type': 'application/json'
+		};
+		const data = JSON.stringify(contactInfo);
 		console.log(data);
-	   const resp = await fetch('http://localhost:1337/contact-managers/', {
+		const resp = await fetch('http://localhost:1337/contact-managers/', {
 			method: 'POST',
 			headers: headers,
 			body: data
 		});
+
 		fetchContacts();
 	};
 
 	const onClickPhoneHandle = (phone) => {
-		contactInfo.Phone = phone;
+		contactInfo.hone = phone;
 		addContact(contactInfo);
 		setcontactList([ ...contactList, contactInfo ]);
 	};
 	const onClickSurnameHandle = (surname) => {
-		contactInfo.Surname = surname;
+		contactInfo.surname = surname;
 	};
 
 	const onClickNameHandle = (name) => {
-		contactInfo.Name = name;
+		contactInfo.name = name;
 	};
 
 	return (
@@ -73,10 +63,16 @@ function App() {
 			/>
 			<div className="list-wrapper">
 				<ul className="list">
-					{contactList.map((item, index) => {
+					{contactList.map((item) => {
 						return (
-							<li className="list-item" key={index}>
-								<Contact name={item.Name} surname={item.Surname} phone={item.Phone} isdeleted={item.Deleted} />
+							<li className="list-item" key={item.id}>
+								<Contact
+									name={item.name}
+									surname={item.surname}
+									phone={item.phone}
+									isdeleted={item.isDeleted}
+									id={item.id}
+								/>
 							</li>
 						);
 					})}
