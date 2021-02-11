@@ -41,7 +41,7 @@ function App() {
 	};
 
 	const onClickPhoneHandle = (phone) => {
-		contactInfo.hone = phone;
+		contactInfo.phone = phone;
 		addContact(contactInfo);
 		setcontactList([ ...contactList, contactInfo ]);
 	};
