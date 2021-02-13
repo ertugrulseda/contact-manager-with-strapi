@@ -22,7 +22,6 @@ function ContactEntry(props) {
       };
    
     const onClickHandle =(e)=>{
-        console.log("e",e.target.value);
          if( name !== ''){
             props.onClickNameHandle(name);
             setName("");

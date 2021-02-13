@@ -22,7 +22,6 @@ function App() {
 		const resp = await fetch('http://localhost:1337/contact-managers/');
 		const jsonData = await resp.json();
 		setcontactList(jsonData);
-		console.log(jsonData);
 	};
 
 	const addContact = async (contactInfo) => {
@@ -30,7 +29,6 @@ function App() {
 			'Content-Type': 'application/json'
 		};
 		const data = JSON.stringify(contactInfo);
-		console.log(data);
 		const resp = await fetch('http://localhost:1337/contact-managers/', {
 			method: 'POST',
 			headers: headers,
@@ -43,7 +41,6 @@ function App() {
 	const onClickPhoneHandle = (phone) => {
 		contactInfo.phone = phone;
 		addContact(contactInfo);
-		setcontactList([ ...contactList, contactInfo ]);
 	};
 	const onClickSurnameHandle = (surname) => {
 		contactInfo.surname = surname;

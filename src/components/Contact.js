@@ -18,12 +18,10 @@ function Contact({ name, surname, phone, isdeleted, id }) {
 		const div = btn.parentElement;
     let isDeleted = false;
 		if (del === false) {
-			//api call
 			setDel(true);
       isDeleted =true;
 			div.style.textDecorationLine = 'line-through';
 		} else {
-			//api call
 			setDel(false);
       isDeleted =false;
 			div.style.textDecorationLine = 'none';
@@ -39,7 +37,6 @@ function Contact({ name, surname, phone, isdeleted, id }) {
       isDeleted: deleted
     }
     const data = JSON.stringify(info);
-    console.log('http://localhost:1337/contact-managers/' + deletedid);
 		const resp = await fetch('http://localhost:1337/contact-managers/' + deletedid, {
 			method: 'PUT',
 			headers: headers,
